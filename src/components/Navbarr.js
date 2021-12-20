@@ -23,6 +23,7 @@ export default class Navbarr extends Component {
     }
   }
   logout = () => {
+    localStorage.setItem("token", "");
     localStorage.setItem("isLoggedIn", "false");
     this.setState({
       isLoggedIn: false,
@@ -45,6 +46,9 @@ export default class Navbarr extends Component {
               <>
                 <Nav.Link as={Link} to="/home">
                   Home <i className="fas fa-chart-line"></i>
+                </Nav.Link>
+                <Nav.Link as={Link} to="/setting">
+                  Setting <i class="fas fa-cogs"></i>
                 </Nav.Link>
                 <Nav.Link onClick={this.logout}>
                   logout <i className="fas fa-sign-out-alt"></i>

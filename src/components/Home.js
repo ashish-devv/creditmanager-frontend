@@ -3,6 +3,23 @@ import imageforpage from "./images/3627664.svg";
 import Navbarr from "./Navbarr";
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      regno: "",
+    };
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.redirector = this.redirector.bind(this);
+  }
+  //on change handler
+  onChangeHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  // function to redirect another page
+  redirector = () => {
+    this.props.history.push("/report/" + this.state.regno);
+  };
+
   render() {
     return (
       <div>
@@ -22,11 +39,17 @@ export default class Home extends Component {
                   <br />
                   <br />
                   <input
-                    type="text"
+                    type="number"
                     className="form-control border-dark"
                     placeholder="Search 🔍 by Your Registered Number."
+                    name="regno"
+                    value={this.state.regno}
+                    onChange={this.onChangeHandler}
                   />
-                  <button className="btn btn-dark mt-3">
+                  <button
+                    className="btn btn-dark mt-3"
+                    onClick={this.redirector}
+                  >
                     <i className="fas fa-search"></i> Search
                   </button>
                   <br />

@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Setup from "./components/Setup";
 import Report from "./components/Report";
+import Settings from "./components/Settings";
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/home" component={Setup} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Signup} />
+          <Route exact path="/setting" component={Settings} />
           <Route exact path="/report/:regno" component={Report} />
         </Switch>
       </div>

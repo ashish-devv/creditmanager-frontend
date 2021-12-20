@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Navbarr from "./Navbarr";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import imageforpage from "./images/3324675.svg";
 import Subjectcard from "./images/Subjectcard";
 
@@ -61,8 +59,8 @@ export default class Setup extends Component {
         authorization: localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        subjectname: this.state.subjectname,
-        subjectcode: this.state.subjectcode,
+        subjectname: this.state.subjectname.toLowerCase(),
+        subjectcode: this.state.subjectcode.toLowerCase(),
         subjectcredit: this.state.subjectcredit,
         semester: this.state.semester,
         basketno: this.state.basketno,
@@ -264,7 +262,13 @@ export default class Setup extends Component {
                       item.basketno == 1 &&
                       item.semester == this.state.semester
                     ) {
-                      return <Subjectcard data={item} key={item._id} />;
+                      return (
+                        <Subjectcard
+                          data={item}
+                          key={item._id}
+                          handler={this.getDataApi}
+                        />
+                      );
                     }
                   })}
                 </div>
@@ -275,7 +279,13 @@ export default class Setup extends Component {
                       item.basketno == 2 &&
                       item.semester == this.state.semester
                     ) {
-                      return <Subjectcard data={item} key={item._id} />;
+                      return (
+                        <Subjectcard
+                          data={item}
+                          key={item._id}
+                          handler={this.getDataApi}
+                        />
+                      );
                     }
                   })}
                 </div>
@@ -286,7 +296,13 @@ export default class Setup extends Component {
                       item.basketno == 3 &&
                       item.semester == this.state.semester
                     ) {
-                      return <Subjectcard data={item} key={item._id} />;
+                      return (
+                        <Subjectcard
+                          data={item}
+                          key={item._id}
+                          handler={this.getDataApi}
+                        />
+                      );
                     }
                   })}
                 </div>
@@ -297,7 +313,13 @@ export default class Setup extends Component {
                       item.basketno == 4 &&
                       item.semester == this.state.semester
                     ) {
-                      return <Subjectcard data={item} key={item._id} />;
+                      return (
+                        <Subjectcard
+                          data={item}
+                          key={item._id}
+                          handler={this.getDataApi}
+                        />
+                      );
                     }
                   })}
                 </div>
@@ -308,7 +330,13 @@ export default class Setup extends Component {
                       item.basketno == 5 &&
                       item.semester == this.state.semester
                     ) {
-                      return <Subjectcard data={item} key={item._id} />;
+                      return (
+                        <Subjectcard
+                          data={item}
+                          key={item._id}
+                          handler={this.getDataApi}
+                        />
+                      );
                     }
                   })}
                 </div>

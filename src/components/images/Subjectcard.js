@@ -8,6 +8,7 @@ export default class Subjectcard extends Component {
   }
   // function to delete the subject
   deleteSubject = () => {
+    console.log(this.props);
     // get request to delete the subject
     fetch("http://localhost:5000/api/deletesubject/" + this.props.data._id, {
       method: "DELETE",
@@ -21,7 +22,8 @@ export default class Subjectcard extends Component {
         console.log(data);
         if (data.code === 0) {
           // if success then reload the page
-          window.location.reload();
+          // window.location.reload();
+          this.props.handler();
         }
       });
   };
@@ -47,9 +49,9 @@ export default class Subjectcard extends Component {
             </button>{" "}
             &nbsp;
             {/* create a edit button */}
-            <button className="btn btn-outline-warning btn-sm">
+            {/* <button className="btn btn-outline-warning btn-sm">
               <i className="fa fa-edit" />
-            </button>
+            </button> */}
           </p>
         </div>
       </div>
