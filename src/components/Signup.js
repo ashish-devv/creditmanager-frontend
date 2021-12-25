@@ -46,7 +46,7 @@ export default class Signup extends Component {
       this.setState({
         isLoading: true,
       });
-      fetch("http://localhost:5000/api/register", {
+      fetch(process.env.REACT_APP_BACKEND_URL + "/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

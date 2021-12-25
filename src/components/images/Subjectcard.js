@@ -10,13 +10,18 @@ export default class Subjectcard extends Component {
   deleteSubject = () => {
     console.log(this.props);
     // get request to delete the subject
-    fetch("http://localhost:5000/api/deletesubject/" + this.props.data._id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token"),
-      },
-    })
+    fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/api/deletesubject/" +
+        this.props.data._id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token"),
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

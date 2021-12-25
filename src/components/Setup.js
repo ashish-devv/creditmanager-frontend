@@ -17,21 +17,50 @@ export default class Setup extends Component {
       subjectcredit: "",
       semester: 1,
       basketno: 1,
+      basket1: "",
+      basket2: "",
+      basket3: "",
+      basket4: "",
+      basket5: "",
     };
     this.readJwt = this.readJwt.bind(this);
+    this.getbasketdetails = this.getbasketdetails.bind(this);
   }
   componentDidMount() {
     this.readJwt();
     this.getDataApi();
+    this.getbasketdetails();
   }
   handelChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
+  //get basketdetails from api
+  getbasketdetails = () => {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/api/updatebasketcredit", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          basket1: res.user.basket1,
+          basket2: res.user.basket2,
+          basket3: res.user.basket3,
+          basket4: res.user.basket4,
+          basket5: res.user.basket5,
+        });
+      });
+  };
+
   //function to hit the api
   getDataApi = () => {
-    fetch("http://localhost:5000/api/getsubjectlist", {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/api/getsubjectlist", {
       method: "GET",
       headers: {
         authorization: localStorage.getItem("token"),
@@ -52,7 +81,7 @@ export default class Setup extends Component {
   };
   //add subject function
   addData = () => {
-    fetch("http://localhost:5000/api/addsubject", {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/api/addsubject", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -112,7 +141,12 @@ export default class Setup extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-9">
-              <h3 className="h3">Hey {this.state.name},</h3>
+              <h3 className="h3 mt-2">
+                Hey {this.state.name},{" "}
+                <button className="btn btn-outline-secondary">
+                  View My Report
+                </button>
+              </h3>
               <hr />
               <h6 className="h6">Add Subjects</h6>
               <div className="row g-5 ">
@@ -243,11 +277,11 @@ export default class Setup extends Component {
                     </tr>
                     <tr>
                       <th scope="row">To be Completed</th>
-                      <td>18</td>
-                      <td>18</td>
-                      <td>27</td>
-                      <td>45</td>
-                      <td>52</td>
+                      <td>{this.state.basket1}</td>
+                      <td>{this.state.basket2}</td>
+                      <td>{this.state.basket3}</td>
+                      <td>{this.state.basket4}</td>
+                      <td>{this.state.basket5}</td>
                     </tr>
                   </tbody>
                 </table>

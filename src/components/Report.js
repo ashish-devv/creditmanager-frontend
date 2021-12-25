@@ -13,6 +13,11 @@ export default class Report extends Component {
       studentdetails: [],
       completed: [],
       user: [],
+      basket1: "",
+      basket2: "",
+      basket3: "",
+      basket4: "",
+      basket5: "",
     };
     this.handelChange = this.handelChange.bind(this);
     this.getstudentdetails = this.getstudentdetails.bind(this);
@@ -24,7 +29,8 @@ export default class Report extends Component {
   // function to hit get all subject api
   getstudentdetails = () => {
     fetch(
-      "http://localhost:5000/api/getsubjectlist/" +
+      process.env.REACT_APP_BACKEND_URL +
+        "/api/getsubjectlist/" +
         this.props.match.params.regno
     )
       .then((res) => res.json())
@@ -39,6 +45,11 @@ export default class Report extends Component {
           studentdetails: data.subjectlist,
           completed: this.calculateTotal(data.subjectlist),
           user: data.user,
+          basket1: data.user.basket1,
+          basket2: data.user.basket2,
+          basket3: data.user.basket3,
+          basket4: data.user.basket4,
+          basket5: data.user.basket5,
         });
       });
   };
@@ -134,75 +145,80 @@ export default class Report extends Component {
                     </label>
                     <ProgressBar
                       animated
-                      now={(this.state.completed[0] / 18) * 100}
+                      now={(this.state.completed[0] / this.state.basket1) * 100}
                       striped
                       variant={
-                        (this.state.completed[0] / 18) * 100 > 50
+                        (this.state.completed[0] / this.state.basket1) * 100 >
+                        50
                           ? "success"
                           : "danger"
                       }
                       className="mt-1"
-                      label={`(${this.state.completed[0]} / 18)`}
+                      label={`(${this.state.completed[0]} / ${this.state.basket1})`}
                     />
                     <label className="font-weight-bold text-start">
                       Basket 2
                     </label>
                     <ProgressBar
                       animated
-                      now={(this.state.completed[1] / 18) * 100}
+                      now={(this.state.completed[1] / this.state.basket2) * 100}
                       striped
                       variant={
-                        (this.state.completed[1] / 18) * 100 > 50
+                        (this.state.completed[1] / this.state.basket2) * 100 >
+                        50
                           ? "success"
                           : "danger"
                       }
                       className="mt-1"
-                      label={`(${this.state.completed[1]} / 18)`}
+                      label={`(${this.state.completed[1]} / ${this.state.basket2})`}
                     />
                     <label className="font-weight-bold text-start">
                       Basket 3
                     </label>
                     <ProgressBar
                       animated
-                      now={(this.state.completed[2] / 18) * 100}
+                      now={(this.state.completed[2] / this.state.basket3) * 100}
                       striped
                       variant={
-                        (this.state.completed[2] / 18) * 100 > 50
+                        (this.state.completed[2] / this.state.basket3) * 100 >
+                        50
                           ? "success"
                           : "danger"
                       }
                       className="mt-1"
-                      label={`(${this.state.completed[2]} / 18)`}
+                      label={`(${this.state.completed[2]} / ${this.state.basket3})`}
                     />
                     <label className="font-weight-bold text-start">
                       Basket 4
                     </label>
                     <ProgressBar
                       animated
-                      now={(this.state.completed[3] / 18) * 100}
+                      now={(this.state.completed[3] / this.state.basket4) * 100}
                       striped
                       variant={
-                        (this.state.completed[3] / 18) * 100 > 50
+                        (this.state.completed[3] / this.state.basket4) * 100 >
+                        50
                           ? "success"
                           : "danger"
                       }
                       className="mt-1"
-                      label={`(${this.state.completed[3]} / 18)`}
+                      label={`(${this.state.completed[3]} / ${this.state.basket4})`}
                     />
                     <label className="font-weight-bold text-start">
                       Basket 5
                     </label>
                     <ProgressBar
                       animated
-                      now={(this.state.completed[4] / 18) * 100}
+                      now={(this.state.completed[4] / this.state.basket5) * 100}
                       striped
                       variant={
-                        (this.state.completed[4] / 18) * 100 > 50
+                        (this.state.completed[4] / this.state.basket5) * 100 >
+                        50
                           ? "success"
                           : "danger"
                       }
                       className="mt-1"
-                      label={`(${this.state.completed[4]} / 18)`}
+                      label={`(${this.state.completed[4]} / ${this.state.basket5})`}
                     />
                   </p>
                 </div>

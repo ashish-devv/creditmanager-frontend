@@ -40,7 +40,7 @@ export default class Login extends Component {
       this.setState({
         isLoading: true,
       });
-      fetch("http://localhost:5000/api/login", {
+      fetch(process.env.REACT_APP_BACKEND_URL + "/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,6 +56,8 @@ export default class Login extends Component {
           if (res.success === 1) {
             //save token in local storage
             localStorage.setItem("token", res.token);
+            //save unique id in local storage
+            //localStorage.setItem("uid", JSON.parse(atob(res.token)).uid);
             localStorage.setItem("isLoggedIn", "true");
             this.setState({
               isLoggedIn: true,
