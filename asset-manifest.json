@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/creditmanager-frontend/static/css/main.ebbb9bbf.css",
-    "main.js": "/creditmanager-frontend/static/js/main.341c3c65.js",
+    "main.js": "/creditmanager-frontend/static/js/main.d9252bb7.js",
     "static/media/3627664.svg": "/creditmanager-frontend/static/media/3627664.45d8e74464fab61c1d7721762f391128.svg",
     "static/media/3324675.svg": "/creditmanager-frontend/static/media/3324675.43d8a6c21fe1c438b0045743ac1f6558.svg",
     "static/media/20943584 [Converted].svg": "/creditmanager-frontend/static/media/20943584 [Converted].4f25a1a48ce6ab90816b5967fd732522.svg",
@@ -9,10 +9,10 @@
     "static/media/Mobile login.svg": "/creditmanager-frontend/static/media/Mobile login.68b8eecb9bf0583ec053f328f62ad04d.svg",
     "index.html": "/creditmanager-frontend/index.html",
     "main.ebbb9bbf.css.map": "/creditmanager-frontend/static/css/main.ebbb9bbf.css.map",
-    "main.341c3c65.js.map": "/creditmanager-frontend/static/js/main.341c3c65.js.map"
+    "main.d9252bb7.js.map": "/creditmanager-frontend/static/js/main.d9252bb7.js.map"
   },
   "entrypoints": [
     "static/css/main.ebbb9bbf.css",
-    "static/js/main.341c3c65.js"
+    "static/js/main.d9252bb7.js"
   ]
 }
