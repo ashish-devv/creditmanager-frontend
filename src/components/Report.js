@@ -292,30 +292,35 @@ export default class Report extends Component {
                       data={this.state.studentdetails}
                       basketno={1}
                       completed={this.state.completed[0]}
+                      basket={this.state.basket1}
                     />
                     <h3 className="h3">Basket 2 </h3>
                     <Baskettable
                       data={this.state.studentdetails}
                       basketno={2}
                       completed={this.state.completed[1]}
+                      basket={this.state.basket2}
                     />
                     <h3 className="h3">Basket 3 </h3>
                     <Baskettable
                       data={this.state.studentdetails}
                       basketno={3}
                       completed={this.state.completed[2]}
+                      basket={this.state.basket3}
                     />
                     <h3 className="h3">Basket 4 </h3>
                     <Baskettable
                       data={this.state.studentdetails}
                       basketno={4}
                       completed={this.state.completed[3]}
+                      basket={this.state.basket4}
                     />
                     <h3 className="h3">Basket 5 </h3>
                     <Baskettable
                       data={this.state.studentdetails}
                       basketno={5}
                       completed={this.state.completed[4]}
+                      basket={this.state.basket5}
                     />
                   </div>
                 </div>

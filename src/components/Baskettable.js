@@ -31,7 +31,7 @@ export default class Baskettable extends Component {
             })}
             <tr className="table-success text-center ">
               <th scope="row" colSpan={2}>
-                Total
+                Total Completed credit
               </th>
               <td>
                 {/* sum all basket 1 credit */}
@@ -43,7 +43,9 @@ export default class Baskettable extends Component {
                 Remaining Credit
               </th>
               <td>
-                <span className="badge">{}</span>
+                <span className="badge bg-danger">
+                  {this.props.basket - this.props.completed}
+                </span>
               </td>
             </tr>
           </tbody>
