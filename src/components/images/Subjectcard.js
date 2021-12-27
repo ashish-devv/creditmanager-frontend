@@ -3,11 +3,14 @@ import React, { Component } from "react";
 export default class Subjectcard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoading: false,
+    };
     this.deleteSubject = this.deleteSubject.bind(this);
   }
   // function to delete the subject
   deleteSubject = () => {
+    this.setState({ isLoading: true });
     console.log(this.props);
     // get request to delete the subject
     fetch(
@@ -26,6 +29,7 @@ export default class Subjectcard extends Component {
       .then((data) => {
         console.log(data);
         if (data.code === 0) {
+          this.setState({ isLoading: false });
           // if success then reload the page
           // window.location.reload();
           this.props.handler();
@@ -53,6 +57,12 @@ export default class Subjectcard extends Component {
               <i className="fa fa-trash" />
             </button>{" "}
             &nbsp;
+            {/* loading logo */}
+            {this.state.isLoading ? (
+              <i className="fa fa-spinner fa-spin" />
+            ) : (
+              " "
+            )}
             {/* create a edit button */}
             {/* <button className="btn btn-outline-warning btn-sm">
               <i className="fa fa-edit" />

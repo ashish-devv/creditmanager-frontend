@@ -12,6 +12,7 @@ export default class Navbarr extends Component {
     this.state = {
       isLoggedIn: false,
     };
+
     //bind the function to the class
     this.logout = this.logout.bind(this);
   }

@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import Setup from "./components/Setup";
 import Report from "./components/Report";
 import Settings from "./components/Settings";
+
 function App() {
   return (
     <Router>

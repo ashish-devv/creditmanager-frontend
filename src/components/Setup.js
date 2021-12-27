@@ -36,6 +36,10 @@ export default class Setup extends Component {
       [event.target.name]: event.target.value,
     });
   };
+  // function to redirect to report page
+  gotoreportpage = () => {
+    this.props.history.push("/report/" + this.state.regno);
+  };
   //get basketdetails from api
   getbasketdetails = () => {
     fetch(process.env.REACT_APP_BACKEND_URL + "/api/updatebasketcredit", {
@@ -143,8 +147,11 @@ export default class Setup extends Component {
             <div className="col-sm-9">
               <h3 className="h3 mt-2">
                 Hey {this.state.name},{" "}
-                <button className="btn btn-outline-secondary">
-                  View My Report
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={this.gotoreportpage}
+                >
+                  View My Report &nbsp;<i className="fa fa-file-pdf"></i>
                 </button>
               </h3>
               <hr />
