@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbarr from "./Navbarr";
 import imageforpage from "./images/3324675.svg";
-import Subjectcard from "./images/Subjectcard";
+import Subjectcard from "./Subjectcard";
 
 export default class Setup extends Component {
   constructor(props) {
@@ -58,6 +58,7 @@ export default class Setup extends Component {
           basket3: res.user.basket3,
           basket4: res.user.basket4,
           basket5: res.user.basket5,
+          year: res.user.year,
         });
       });
   };
@@ -97,6 +98,7 @@ export default class Setup extends Component {
         subjectcredit: this.state.subjectcredit,
         semester: this.state.semester,
         basketno: this.state.basketno,
+        year: this.state.year,
       }),
     })
       .then((response) => response.json())

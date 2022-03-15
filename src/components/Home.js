@@ -6,10 +6,12 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isloading: true,
       regno: "",
     };
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.redirector = this.redirector.bind(this);
+    this.checkServerStatus = this.checkServerStatus.bind(this);
   }
   //on change handler
   onChangeHandler = (e) => {
@@ -17,8 +19,44 @@ export default class Home extends Component {
   };
   // function to redirect another page
   redirector = () => {
-    this.props.history.push("/report/" + this.state.regno);
+    if (
+      this.state.regno === "" ||
+      this.state.regno === null ||
+      this.state.regno === undefined ||
+      this.state.regno === " " ||
+      typeof this.state.regno === "NaN"
+    ) {
+      alert("Please enter your registration number");
+    } else {
+      this.props.history.push("/report/" + this.state.regno);
+    }
   };
+
+  //function to check server status
+  checkServerStatus = () => {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/hello", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          console.log("Server is running");
+          this.setState({ isloading: false });
+        } else {
+          console.log("Server is not running");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({ isloading: true });
+      });
+  };
+  componentDidMount() {
+    this.checkServerStatus();
+  }
 
   render() {
     return (
@@ -57,6 +95,19 @@ export default class Home extends Component {
                     <br />
                     <i className="fas fa-info-circle"></i> &nbsp; If you are not
                     registered, please register first. or Login.
+                  </span>
+                  <br />
+                  {/* Check Server Status */}
+                  <span className="text-muted">
+                    Server Status...
+                    {this.state.isloading ? (
+                      <span>
+                        <i className="fa fa-spinner fa-spin text-danger" />
+                        Loading
+                      </span>
+                    ) : (
+                      <i className="fa fa-check-circle text-success" />
+                    )}
                   </span>
                 </p>
               </div>

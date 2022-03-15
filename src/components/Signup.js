@@ -11,6 +11,8 @@ export default class Signup extends Component {
       regno: "",
       email: "",
       password: "",
+      year: "",
+      admincode: "",
       isLoggedIn: false,
       isLoading: false,
       error: null,
@@ -39,7 +41,8 @@ export default class Signup extends Component {
       this.state.name === "" ||
       this.state.regno === "" ||
       this.state.email === "" ||
-      this.state.password === ""
+      this.state.password === "" ||
+      this.state.year === ""
     ) {
       alert("Please fill all the fields");
     } else {
@@ -55,7 +58,9 @@ export default class Signup extends Component {
           name: this.state.name,
           regno: this.state.regno,
           email: this.state.email,
+          year: this.state.year,
           password: this.state.password,
+          admincode: this.state.admincode,
         }),
       })
         .then((response) => response.json())
@@ -71,6 +76,8 @@ export default class Signup extends Component {
               password: "",
               name: "",
               regno: "",
+              year: "",
+              admincode: "",
             });
           } else {
             this.setState({
@@ -128,6 +135,24 @@ export default class Signup extends Component {
                           value={this.state.email}
                           onChange={this.handleChange}
                           name="email"
+                          required
+                        />
+                        <input
+                          type="number"
+                          className="form-control border-dark mt-3"
+                          placeholder="PassYear (if having Special code enter 0000)"
+                          value={this.state.year}
+                          onChange={this.handleChange}
+                          name="year"
+                          required
+                        />
+                        <input
+                          type="text"
+                          className="form-control border-dark mt-3"
+                          placeholder="Enter special code(if any)"
+                          value={this.state.admincode}
+                          onChange={this.handleChange}
+                          name="admincode"
                           required
                         />
                         <input

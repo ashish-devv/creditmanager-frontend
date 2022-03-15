@@ -29,7 +29,8 @@ export default class Navbarr extends Component {
     this.setState({
       isLoggedIn: false,
     });
-    //redirect to login route
+    //redirect to home Route
+
     window.location.href = "/";
   };
   render() {

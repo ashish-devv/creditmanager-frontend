@@ -63,7 +63,12 @@ export default class Login extends Component {
               isLoggedIn: true,
             });
             //redirect to home page
-            this.props.history.push("/home");
+            console.log(res.adminstatus);
+            if (res.adminstatus === true) {
+              this.props.history.push("/admin");
+            } else {
+              this.props.history.push("/home");
+            }
           } else {
             this.setState({
               error: res.status,
